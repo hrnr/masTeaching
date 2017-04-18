@@ -16,5 +16,5 @@ sourceSets{main{java{srcDir 'src'}}}
 
 mainClassName = 'jade.Boot'
 run {
-   args = ['-gui']
+   args = ['-gui', 'DiscountSeller1:mas.cv4.DiscountSellerAgent;DiscountSeller2:mas.cv4.DiscountSellerAgent;DiscountSeller3:mas.cv4.DiscountSellerAgent;DiscountSeller4:mas.cv4.DiscountSellerAgent;DiscountSeller5:mas.cv4.DiscountSellerAgent;Envi:mas.cv4.Environment']
 }
