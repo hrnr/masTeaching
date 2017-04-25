@@ -28,7 +28,8 @@ public class DiscountSellerAgent extends BookTraderBase {
 	@Override
 	public ArrayList<BookInfo> getBooksToBuy() {
 		ArrayList<BookInfo> missingGoalBooks = getMissingGoalBooks();
-		// log("Getting a list of books to buy " + missingGoalBooks.toString());
+		log("I buy  books: " + missingGoalBooks.toString());
+		log("I sell books: " + getUnnecessaryBooks());
 		return missingGoalBooks;
 	}
 

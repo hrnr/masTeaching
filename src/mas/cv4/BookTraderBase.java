@@ -115,9 +115,14 @@ public abstract class BookTraderBase extends Agent implements BookTraderDecision
 	}
 
 	int getOwnedInstancesCount(BookInfo b) {
+		String bookName = b.getBookName();
+		return getOwnedInstancesCount(bookName);
+	}
+
+	private int getOwnedInstancesCount(String bookName) {
 		int count = 0;
 		for (BookInfo myBook : myBooks) {
-			if (myBook.getBookName().equals(b.getBookName())) {
+			if (myBook.getBookName().equals(bookName)) {
 				count++;
 			}
 		}
@@ -129,8 +134,13 @@ public abstract class BookTraderBase extends Agent implements BookTraderDecision
 	}
 
 	boolean isGoalBook(BookInfo b) {
+		String bookname = b.getBookName();
+		return isGoalBook(bookname);
+	}
+
+	private boolean isGoalBook(String bookname) {
 		for (Goal goal : myGoal) {
-			if (goal.getBook().getBookName().equals(b.getBookName())) {
+			if (goal.getBook().getBookName().equals(bookname)) {
 				return true;
 			}
 		}
@@ -142,8 +152,9 @@ public abstract class BookTraderBase extends Agent implements BookTraderDecision
 	}
 
 	double getGoalBookPrice(BookInfo b) {
+		String bookName = b.getBookName();
 		for (Goal goal : myGoal) {
-			if (goal.getBook().getBookName().equals(b.getBookName())) {
+			if (goal.getBook().getBookName().equals(bookName)) {
 				return goal.getValue();
 			}
 		}
@@ -158,6 +169,20 @@ public abstract class BookTraderBase extends Agent implements BookTraderDecision
 			}
 		}
 		return missingBooks;
+	}
+
+	ArrayList<String> getUnnecessaryBooks() {
+		ArrayList<String> unnecBooks = new ArrayList<>();
+		for (String book : Constants.getBooknames()) {
+			int count = getOwnedInstancesCount(book);
+			if (isGoalBook(book)) {
+				count--;
+			}
+			if (count >= 1) {
+				unnecBooks.add(book);
+			}
+		}
+		return unnecBooks;
 	}
 
 	void log(String s) {
