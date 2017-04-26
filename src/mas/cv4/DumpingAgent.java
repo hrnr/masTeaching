@@ -1,6 +1,7 @@
 package mas.cv4;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import jade.domain.FIPAAgentManagement.RefuseException;
 import mas.cv4.onto.BookInfo;
@@ -29,7 +30,9 @@ public class DumpingAgent extends BookTraderBase {
 
 	@Override
 	public ArrayList<BookInfo> getBooksToBuy() {
-		ArrayList<BookInfo> missingGoalBooks = getMissingGoalBooks();
+		ArrayList<BookInfo> missingGoalBooks = new ArrayList<>(
+				Constants.getBooknames().stream().map(x -> {BookInfo bi = new BookInfo(); bi.setBookName(x); return bi;})
+				.collect(Collectors.toList()));
 		log("I buy  books: " + missingGoalBooks.toString());
 		log("I sell books: " + getUnnecessaryBooks());
 		return missingGoalBooks;

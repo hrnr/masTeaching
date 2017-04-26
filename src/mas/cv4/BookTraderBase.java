@@ -186,7 +186,7 @@ public abstract class BookTraderBase extends Agent implements BookTraderDecision
 	}
 
 	void log(String s) {
-//		System.out.println(getName() + ": " + s);
+		System.out.println(getName() + ": " + s);
 	}
 
 	// waits for the StartTrading message and adds the trading behavior
