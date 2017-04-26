@@ -35,6 +35,9 @@ public class DiscountSellerAgent extends BookTraderBase {
 
 	@Override
 	public ChooseFrom createOffers(ArrayList<BookInfo> requestedBooks) throws RefuseException {
+		if (requestedBooks == null) {
+			throw new RefuseException("please request something");
+		}
 		double price = 0;
 		ArrayList<BookInfo> sellBooks = new ArrayList<BookInfo>();
 		for (BookInfo requestedBook : requestedBooks) {
