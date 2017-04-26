@@ -22,5 +22,5 @@ run {
 task runConnect(type: JavaExec) {
 	classpath = sourceSets.main.runtimeClasspath
 	main = mainClassName
-	args = ['-container', '-container-name', 'blueteam', '-host', 'u-pl4', '-agents', 'DPagent-blueteam:mas.cv4.DumpingAgent;DSagent-blueteam:mas.cv4.DiscountSellerAgent;blueteamgui:jade.tools.rma.rma']
+	args = ['-container', '-container-name', 'blueteam', '-host', 'u-pl4', '-agents', 'DSagent-blueteam:mas.cv4.DiscountSellerAgent;blueteamgui:jade.tools.rma.rma']
 }
