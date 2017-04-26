@@ -18,3 +18,9 @@ mainClassName = 'jade.Boot'
 run {
    args = ['-gui', 'DiscountSeller1:mas.cv4.DiscountSellerAgent;DiscountSeller2:mas.cv4.DiscountSellerAgent;DiscountSeller3:mas.cv4.DiscountSellerAgent;DiscountSeller4:mas.cv4.DiscountSellerAgent;DiscountSeller5:mas.cv4.DiscountSellerAgent;Envi:mas.cv4.Environment']
 }
+
+task runConnect(type: JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	main = mainClassName
+	args = ['-container', '-container-name', 'blueteam', '-host', 'u-pl4', '-agents', 'DPagent-blueteam:mas.cv4.DumpingAgent;DSagent-blueteam:mas.cv4.DiscountSellerAgent;blueteamgui:jade.tools.rma.rma']
+}
