@@ -402,7 +402,7 @@ public abstract class BookTraderBase extends Agent implements BookTraderDecision
 					try {
 						ce = getContentManager().extractContent(response);
 					} catch (Codec.CodecException | OntologyException e) {
-						e.printStackTrace();
+//						e.printStackTrace();
 						continue;
 					}
 					ChooseFrom cf = (ChooseFrom) ce;

@@ -88,8 +88,9 @@ public class DumpingAgent extends BookTraderBase {
 				// adjust our discount in case another agent is dumping more
 				// than us
 				if (ourPrice > expense) {
-					discount = (ourPrice - expense) / chooseFrom.getWillSell().size();
-					discount -= DUMP_VALUE;
+					double newDiscount = (ourPrice - expense) / chooseFrom.getWillSell().size();
+					newDiscount -= DUMP_VALUE;
+					discount = Math.max(discount, newDiscount);
 					log("NEW DISCOUNT: " + discount);
 				}
 			}
